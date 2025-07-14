@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Tugas LPPM Unimar AMNI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Noto Serif';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/notoserif/v22/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFGjwM0.woff2) format('woff2');
+        }
+        @font-face {
+            font-family: 'Noto Serif';
+            font-style: normal;
+            font-weight: 700;
+            src: url(https://fonts.gstatic.com/s/notoserif/v22/ga6iaw1J5X9T9RW6j9bNVls-hfgvz8JcMofYTa32J4wsL2JAlAhZqFGjwM0.woff2) format('woff2');
+        }
+        
+        .letter-paper {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .border-blue {
+            border-bottom: 3px solid #1d4ed8;
+        }
+        
+        .content-text {
+            font-family: 'Noto Serif', serif;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            .container, .no-print {
+                display: none !important;
+            }
+            .letter-paper {
+                visibility: visible;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                position: static;
+                page-break-after: always;
+            }
+            #preview-container {
+                display: block !important;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center text-blue-800 mb-8">Generator Surat Tugas Penelitian dan Pengabdian Masyarakat</h1>
+        <h2 class="text-xl font-semibold text-center text-gray-700 mb-8">LPPM Universitas Maritim AMNI</h2>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h3 class="text-xl font-semibold text-blue-700 mb-4">Formulir Surat Tugas</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Ketua Peneliti -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-medium text-gray-800 border-b pb-2">Ketua Peneliti/Pengabdi</h4>
+                    
+                    <div>
+                        <label for="nama-ketua" class="block text-sm font-medium text-gray-700">Nama Lengkap Dosen (Ketua)</label>
+                        <input type="text" id="nama-ketua" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    </div>
+                    
+                    <div>
+                        <label for="nidn-ketua" class="block text-sm font-medium text-gray-700">NIDN</label>
+                        <input type="text" id="nidn-ketua" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    </div>
+                    
+                    <div>
+                        <label for="prodi-ketua" class="block text-sm font-medium text-gray-700">Program Studi</label>
+                        <select id="prodi-ketua" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                            <option value="">Pilih Program Studi</option>
+                            <option value="S1 Transportasi">S1 Transportasi</option>
+                            <option value="S1 Teknik Transportasi Laut">S1 Teknik Transportasi Laut</option>
+                            <option value="S1 Teknik Mesin">S1 Teknik Mesin</option>
+                            <option value="S1 Teknik Keselamatan">S1 Teknik Keselamatan</option>
+                            <option value="S1 Perdagangan Internasional">S1 Perdagangan Internasional</option>
+                            <option value="S1 Bisnis Digital">S1 Bisnis Digital</option>
+                            <option value="D4 MPLM">D4 MPLM</option>
+                            <option value="D3 Nautika">D3 Nautika</option>
+                            <option value="D3 Teknika">D3 Teknika</option>
+                            <option value="D3 KPN">D3 KPN</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Detail Kegiatan -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-medium text-gray-800 border-b pb-2">Detail Kegiatan</h4>
+                    
+                    <div>
+                        <label for="judul-kegiatan" class="block text-sm font-medium text-gray-700">Judul Kegiatan</label>
+                        <textarea id="judul-kegiatan" rows="2" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="waktu-pelaksanaan" class="block text-sm font-medium text-gray-700">Waktu Pelaksanaan</label>
+                        <input type="date" id="waktu-pelaksanaan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    </div>
+                    
+                    <div>
+                        <label for="lokasi-kegiatan" class="block text-sm font-medium text-gray-700">Lokasi Kegiatan</label>
+                        <input type="text" id="lokasi-kegiatan" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Anggota -->
+            <div id="anggota-container" class="mt-8">
+                <div class="flex justify-between items-center mb-4">
+                    <h4 class="text-lg font-medium text-gray-800">Anggota Peneliti/Pengabdi</h4>
+                    <button id="tambah-anggota" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                        + Tambah Anggota
+                    </button>
+                </div>
+                
+                <div id="daftar-anggota" class="space-y-4">
+                    <!-- Anggota akan ditambahkan di sini -->
+                </div>
+            </div>
+            
+            <div class="mt-8 flex justify-center">
+                <button id="generate-btn" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-md text-lg font-medium">
+                    Generate Surat Tugas
+                </button>
+            </div>
+        </div>
+        
+        <!-- Preview Surat -->
+        <div id="preview-container" class="hidden bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-blue-700">Preview Surat Tugas</h3>
+                <button id="save-pdf" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                    Save as PDF
+                </button>
+            </div>
+            
+            <div id="letter-content" class="letter-paper p-10 mx-auto">
+                <!-- Konten surat akan di-generate di sini -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter untuk anggota
+            let anggotaCounter = 0;
+            
+            // Tombol tambah anggota
+            document.getElementById('tambah-anggota').addEventListener('click', function() {
+                anggotaCounter++;
+                
+                const anggotaHTML = `
+                    <div class="anggota-item bg-gray-50 p-4 rounded-md border border-gray-200">
+                        <div class="flex justify-between items-start mb-2">
+                            <h5 class="font-medium text-gray-700">Anggota ${anggotaCounter}</h5>
+                            <button class="hapus-anggota text-red-600 hover:text-red-800 text-sm">Hapus</button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                                <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border anggota-nama">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">NIDN</label>
+                                <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border anggota-nidn">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Program Studi</label>
+                                <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border anggota-prodi">
+                                    <option value="">Pilih Program Studi</option>
+                                    <option value="S1 Transportasi">S1 Transportasi</option>
+                                    <option value="S1 Teknik Transportasi Laut">S1 Teknik Transportasi Laut</option>
+                                    <option value="S1 Teknik Mesin">S1 Teknik Mesin</option>
+                                    <option value="S1 Teknik Keselamatan">S1 Teknik Keselamatan</option>
+                                    <option value="S1 Perdagangan Internasional">S1 Perdagangan Internasional</option>
+                                    <option value="S1 Bisnis Digital">S1 Bisnis Digital</option>
+                                    <option value="D4 MPLM">D4 MPLM</option>
+                                    <option value="D3 Nautika">D3 Nautika</option>
+                                    <option value="D3 Teknika">D3 Teknika</option>
+                                    <option value="D3 KPN">D3 KPN</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('daftar-anggota').insertAdjacentHTML('beforeend', anggotaHTML);
+            });
+            
+            // Delegasi event untuk tombol hapus anggota
+            document.getElementById('daftar-anggota').addEventListener('click', function(e) {
+                if (e.target.classList.contains('hapus-anggota')) {
+                    e.target.closest('.anggota-item').remove();
+                    anggotaCounter--;
+                    // Update nomor anggota
+                    const anggotaItems = document.querySelectorAll('.anggota-item');
+                    anggotaItems.forEach((item, index) => {
+                        item.querySelector('h5').textContent = `Anggota ${index + 1}`;
+                    });
+                }
+            });
+            
+            // Tombol generate surat
+            document.getElementById('generate-btn').addEventListener('click', function() {
+                generateSurat();
+            });
+            
+            // Tombol save as PDF
+            document.getElementById('save-pdf').addEventListener('click', function() {
+                const element = document.getElementById('letter-content');
+                const opt = {
+                    margin: 10,
+                    filename: 'Surat_Tugas_LPPM_AMNI.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2,
+                        letterRendering: true,
+                        useCORS: true,
+                        allowTaint: true
+                    },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                
+                html2pdf().set(opt).from(element).save();
+            });
+            
+            // Fungsi untuk generate surat
+            function generateSurat() {
+                // Ambil data dari form
+                const namaKetua = document.getElementById('nama-ketua').value;
+                const nidnKetua = document.getElementById('nidn-ketua').value;
+                const prodiKetua = document.getElementById('prodi-ketua').value;
+                const judulKegiatan = document.getElementById('judul-kegiatan').value;
+                const waktuPelaksanaan = document.getElementById('waktu-pelaksanaan').value;
+                const lokasiKegiatan = document.getElementById('lokasi-kegiatan').value;
+                
+                // Validasi form
+                if (!namaKetua || !nidnKetua || !prodiKetua || !judulKegiatan || !waktuPelaksanaan || !lokasiKegiatan) {
+                    alert('Harap lengkapi semua data utama sebelum generate surat!');
+                    return;
+                }
+                
+                // Ambil data anggota
+                const anggotaItems = document.querySelectorAll('.anggota-item');
+                const anggotaData = [];
+                
+                anggotaItems.forEach(item => {
+                    const nama = item.querySelector('.anggota-nama').value;
+                    const nidn = item.querySelector('.anggota-nidn').value;
+                    const prodi = item.querySelector('.anggota-prodi').value;
+                    
+                    if (nama && nidn && prodi) {
+                        anggotaData.push({ nama, nidn, prodi });
+                    }
+                });
+                
+                // Format tanggal
+                const date = new Date(waktuPelaksanaan);
+                const tanggalPelaksanaan = new Intl.DateTimeFormat('id-ID', { 
+                    day: 'numeric', 
+                    month: 'long', 
+                    year: 'numeric' 
+                }).format(date);
+                
+                // Bulan romawi untuk nomor surat
+                const bulanRomawi = getBulanRomawi(new Date(date.getFullYear(), date.getMonth() - 1, date.getDate()));
+                
+                // Generate nomor surat
+                const nomorSurat = `00${namaKetua.length}/PPM/LPPM-AMNI/${bulanRomawi}/${date.getFullYear()}`;
+                
+                // Generate konten surat
+                const letterHTML = `
+                    <div class="space-y-6">
+                        <!-- Kop Surat -->
+                        <div class="flex items-center gap-4">
+                            <img src="https://sia.unimar-amni.ac.id/lib/img/logo.png" alt="Logo AMNI" class="h-20">
+                            <div>
+                                <h2 class="text-xl font-bold">LEMBAGA PENELITIAN DAN PENGABDIAN MASYARAKAT (LPPM)</h2>
+                                <h3 class="text-lg font-bold">UNIVERSITAS MARITIM AMNI</h3>
+                                <p class="text-sm">Jl. Soekarno-Hatta No. 180</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-blue my-4"></div>
+                        
+                        <!-- Judul Surat -->
+                        <div class="text-center">
+                            <h1 class="text-xl font-bold underline">SURAT TUGAS</h1>
+                            <p class="text-sm">Nomor: ${nomorSurat}</p>
+                        </div>
+                        
+                        <!-- Isi Surat -->
+                        <div class="content-text">
+                            <p class="mb-4">Yang bertanda tangan di bawah ini, Direktur Lembaga Penelitian dan Pengabdian Masyarakat (LPPM) Universitas Maritim AMNI, memberikan tugas kepada:</p>
+                            
+                            <table class="w-full mb-4">
+                                <tr>
+                                    <td class="w-1/12">1.</td>
+                                    <td class="w-4/12">Nama</td>
+                                    <td class="w-7/12">: ${namaKetua}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>NIDN</td>
+                                    <td>: ${nidnKetua}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Program Studi</td>
+                                    <td>: ${prodiKetua}</td>
+                                </tr>
+                            </table>
+                            
+                            ${anggotaData.map((anggota, index) => `
+                                <table class="w-full mb-4">
+                                    <tr>
+                                        <td class="w-1/12">${index + 2}.</td>
+                                        <td class="w-4/12">Nama</td>
+                                        <td class="w-7/12">: ${anggota.nama}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>NIDN</td>
+                                        <td>: ${anggota.nidn}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Program Studi</td>
+                                        <td>: ${anggota.prodi}</td>
+                                    </tr>
+                                </table>
+                            `).join('')}
+                            
+                            <p class="mb-4">Untuk melaksanakan kegiatan: <strong>${judulKegiatan}</strong> yang akan dilaksanakan pada <strong>${tanggalPelaksanaan}</strong> di <strong>${lokasiKegiatan}</strong>.</p>
+                            
+                            <p class="mb-4">Demikian surat tugas ini dibuat untuk dapat dipergunakan sebagaimana mestinya.</p>
+                        </div>
+                        
+                        <!-- Tanda Tangan -->
+                        <div class="flex justify-end mt-16">
+                            <div class="text-center w-64">
+                                <p>Semarang, ${new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(date.getTime() - 7 * 24 * 60 * 60 * 1000))}</p>
+                                <p class="font-bold mt-12">Ketua LPPM</p>
+                                <p class="font-bold">Universitas Maritim AMNI</p>
+                                <div class="flex justify-center my-4">
+                                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiCACb5ctRkQoQTVXntVSbOafvmpxqkXDzTeCpcKF8dMZkRpCevXuLK0434QxjMJotyUTfgCOFG1A_A9jODjO92QkVbK0Oy-Kt7GCxvN08IDrXNRQxOKlYCXonPyHrvlcRBn1LlHCrthjXNhiLXbVAz8IRvmY_SH4M_hJVBt1D92zlZsUSSBzkEdX2Jvg/s1000/qrcode_227428313_9a5fe09469547babf7a328f10fa9c3fa.png" alt="QR Code" class="h-24">
+                                </div>
+                                <div class="mt-8">
+                                    <p class="font-bold underline">Dhanan Abimanto, S.Hum., M. Pd. </p>
+                                    <p>NIDN. 0631078702</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Tampilkan preview
+                document.getElementById('letter-content').innerHTML = letterHTML;
+                document.getElementById('preview-container').classList.remove('hidden');
+                
+                // Scroll ke preview
+                document.getElementById('preview-container').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Fungsi untuk konversi bulan ke romawi
+            function getBulanRomawi(date) {
+                const month = date.getMonth() + 1;
+                const romanNumerals = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+                return romanNumerals[month];
+            }
+        });
+    </script>
+</body>
+</html>
